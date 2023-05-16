@@ -1,0 +1,15 @@
+C:\Users\Mozart\Desktop\DeEn\bin\Debug\net7.0\DeEn.exe
+C:\Users\Mozart\Desktop\DeEn\bin\Debug\net7.0\DeEn.deps.json
+C:\Users\Mozart\Desktop\DeEn\bin\Debug\net7.0\DeEn.runtimeconfig.json
+C:\Users\Mozart\Desktop\DeEn\bin\Debug\net7.0\DeEn.dll
+C:\Users\Mozart\Desktop\DeEn\bin\Debug\net7.0\DeEn.pdb
+C:\Users\Mozart\Desktop\DeEn\obj\Debug\net7.0\DeEn.csproj.AssemblyReference.cache
+C:\Users\Mozart\Desktop\DeEn\obj\Debug\net7.0\DeEn.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mozart\Desktop\DeEn\obj\Debug\net7.0\DeEn.AssemblyInfoInputs.cache
+C:\Users\Mozart\Desktop\DeEn\obj\Debug\net7.0\DeEn.AssemblyInfo.cs
+C:\Users\Mozart\Desktop\DeEn\obj\Debug\net7.0\DeEn.csproj.CoreCompileInputs.cache
+C:\Users\Mozart\Desktop\DeEn\obj\Debug\net7.0\DeEn.dll
+C:\Users\Mozart\Desktop\DeEn\obj\Debug\net7.0\refint\DeEn.dll
+C:\Users\Mozart\Desktop\DeEn\obj\Debug\net7.0\DeEn.pdb
+C:\Users\Mozart\Desktop\DeEn\obj\Debug\net7.0\DeEn.genruntimeconfig.cache
+C:\Users\Mozart\Desktop\DeEn\obj\Debug\net7.0\ref\DeEn.dll
