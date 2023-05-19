@@ -8,7 +8,11 @@ namespace DeEn {
             }
         }
         public static void Encrypt() {
-            
+            Console.Write("Enter file to encrypt> ");
+            string? filename = Console.ReadLine();
+            if (filename == null || filename == "")  {
+                throw new FileNotFoundException("file name cannot be empty!");
+            }
         }
     }
 }
