@@ -35,6 +35,14 @@ namespace DeEn // Note: actual namespace depends on the project name.
                         }
                         break;
                     case "2":
+                        try {
+                            Selected.Encrypt();
+                        } catch (Exception e) {
+                            var f = String.Format("An Exception occured while decrypting :\n {0}", e.Message);
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine(f);
+                            Console.ResetColor();
+                        }
                         break;
                     default:
                         Console.WriteLine("\nExiting...");
