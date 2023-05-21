@@ -20,6 +20,11 @@ namespace DeEn {
             if (filename == null || filename == "")  {
                 throw new FileNotFoundException("file name cannot be empty!");
             }
+            if (File.Exists(filename)) {
+                string raw_text = File.ReadAllText(filename);
+            } else {
+                throw new FileNotFoundException("File does not exist! ", filename);
+            }
         }
     }
 }
