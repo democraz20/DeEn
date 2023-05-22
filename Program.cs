@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace DeEn // Note: actual namespace depends on the project name.
 {
@@ -11,6 +14,12 @@ namespace DeEn // Note: actual namespace depends on the project name.
             byte[] bytes = File.ReadAllBytes(path);
 
             var Bits = new BitArray(bytes);
+
+            List<bool> bitlist = new List<bool>();
+            foreach (bool bit in Bits) {
+                bitlist.Add(bit);
+            }
+
             Console.WriteLine(Bits);
 //                 string logo = @"
 // ▓█████▄ ▓█████ ▓█████  ███▄    █ 
