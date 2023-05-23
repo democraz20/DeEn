@@ -3,6 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+public static class ListExtensions
+{
+    public static IEnumerable<List<T>> Chunk<T>(this List<T> list, int chunkSize)
+    {
+        for (int i = 0; i < list.Count; i += chunkSize)
+        {
+            yield return list.GetRange(i, Math.Min(chunkSize, list.Count - i));
+        }
+    }
+}
+
+
 
 namespace DeEn // Note: actual namespace depends on the project name.
 {
@@ -19,6 +31,8 @@ namespace DeEn // Note: actual namespace depends on the project name.
             foreach (bool bit in Bits) {
                 bitlist.Add(bit);
             }
+            
+            List<List<bool>> chunks = bitlist.Chunk(6).ToList();
 
             Console.WriteLine(Bits);
 //                 string logo = @"
