@@ -22,7 +22,8 @@ namespace DeEn // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            string path = @"bin\Debug\net7.0\DeEn.dll";
+            // string path = @"bin\Debug\net7.0\DeEn.dll";
+            string path = @"testchar.txt";
             byte[] bytes = File.ReadAllBytes(path);
 
             var Bits = new BitArray(bytes);
@@ -53,6 +54,20 @@ namespace DeEn // Note: actual namespace depends on the project name.
             { 56, '4' }, { 57, '5' }, { 58, '6' }, { 59, '7' },
             { 60, '8' }, { 61, '9' }, { 62, '+' }, { 63, '/' }
             };
+
+            foreach (List<bool> boolList in chunks)
+            {
+                int result = 0;
+                for (int i = 0; i < boolList.Count; i++)
+                {
+                    bool bit = boolList[i];
+                    if (bit)
+                    {
+                        result |= 1 << i;
+                    }
+                }
+                Console.Write(base64table[result]);
+            }
 
 
             //                 string logo = @"
