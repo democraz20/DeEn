@@ -49,7 +49,7 @@ namespace DeEn // Note: actual namespace depends on the project name.
                                         // Selected.Decrypt();
                                         Console.Write("Enter data to decrypt > ");
                                         string d = Console.ReadLine();
-                                        BitArray returned = de(d);
+                                        var returned = de(d);
                                     } catch (Exception e) {
                                         var f = String.Format("An Exception occured while decrypting :\n {0}", e.Message);
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -124,7 +124,7 @@ namespace DeEn // Note: actual namespace depends on the project name.
             }
             return s;
         }
-        static BitArray de(string en) {
+        static int de(string en) {
             Dictionary<char, int> base64Dictionary = new Dictionary<char, int>
             {
                 { 'A', 0 }, { 'B', 1 }, { 'C', 2 }, { 'D', 3 },
@@ -144,7 +144,14 @@ namespace DeEn // Note: actual namespace depends on the project name.
                 { '4', 56 }, { '5', 57 }, { '6', 58 }, { '7', 59 },
                 { '8', 60 }, { '9', 61 }, { '+', 62 }, { '/', 63 }
             };
-
+            List<int> intlist = new List<int>{};
+            foreach (char c in en) {
+                intlist.Add(base64Dictionary[c]);
+            }
+            foreach (int i in intlist) {
+                Console.Write("{0}, ", i);
+            } Console.WriteLine();
+            return 0;
             // return new BitArray()
         }
     }
