@@ -148,11 +148,14 @@ namespace DeEn // Note: actual namespace depends on the project name.
             foreach (char c in en) {
                 intlist.Add(base64Dictionary[c]);
             }
-            foreach (int i in intlist) {
-                Console.Write("{0}, ", i);
+            // foreach (int i in intlist) {
+            //     Console.Write("{0}, ", i);
+            // } Console.WriteLine();
+            byte[] byteArray = intlist.Select(i => (byte)i).ToArray();
+            foreach (byte b in byteArray) {
+                Console.Write("{0}, ", b);
             } Console.WriteLine();
             return 0;
-            // return new BitArray()
         }
     }
 }
