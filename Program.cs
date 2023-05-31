@@ -152,9 +152,10 @@ namespace DeEn // Note: actual namespace depends on the project name.
             //     Console.Write("{0}, ", i);
             // } Console.WriteLine();
             byte[] byteArray = intlist.Select(i => (byte)i).ToArray();
-            foreach (byte b in byteArray) {
-                Console.Write("{0}, ", b);
-            } Console.WriteLine();
+            // foreach (byte b in byteArray) {
+            //     Console.Write("{0}, ", b);
+            // } Console.WriteLine();
+            var Bits = new BitArray(byteArray);
             return 0;
         }
     }
