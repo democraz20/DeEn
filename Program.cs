@@ -120,7 +120,6 @@ namespace DeEn // Note: actual namespace depends on the project name.
                     }
                 }
                 s = s + base64table[result];
-                // Console.Write(base64table[result]);
             }
             return s;
         }
@@ -151,11 +150,21 @@ namespace DeEn // Note: actual namespace depends on the project name.
             // foreach (int i in intlist) {
             //     Console.Write("{0}, ", i);
             // } Console.WriteLine();
-            byte[] byteArray = intlist.Select(i => (byte)i).ToArray();
+            // byte[] byteArray = intlist.Select(i => (byte)i).ToArray();
             // foreach (byte b in byteArray) {
             //     Console.Write("{0}, ", b);
             // } Console.WriteLine();
-            var Bits = new BitArray(byteArray);
+            List<List<bool>> bitslist = new List<List<bool>>();
+            foreach (int num in intlist) {
+                List<bool> bitList = new List<bool>(6);
+
+                for (int i = 5; i >= 0; i--)
+                {
+                    bool bit = ((num >> i) & 1) == 1;
+                    bitList.Add(bit);
+                }
+                bitslist.Add(bitList);
+            }
             return 0;
         }
     }
