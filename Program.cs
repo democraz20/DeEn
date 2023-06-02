@@ -165,6 +165,14 @@ namespace DeEn // Note: actual namespace depends on the project name.
                 }
                 bitslist.Add(bitList);
             }
+            Console.WriteLine(en.Length);
+            foreach (List<bool> boolist in bitslist) {
+                foreach (bool bit in boolist)
+                {
+                    Console.Write(bit ? "1" : "0");
+                }
+                Console.WriteLine();
+            }
             return 0;
         }
     }
