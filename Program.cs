@@ -77,13 +77,20 @@ namespace DeEn // Note: actual namespace depends on the project name.
 
         static string en(string filename) {
             byte[] bytes = File.ReadAllBytes(filename);
-
             var Bits = new BitArray(bytes);
-
+            
             List<bool> bitlist = new List<bool>();
             foreach (bool bit in Bits)
             {
                 bitlist.Add(bit);
+            }
+
+            if (Bits.Length % 6 != 0) {
+                int div = Bits.Length % 6;
+                for (int i = 0; i < div; i++)
+                {
+                    bitlist.Add(false);
+                }
             }
 
             List<List<bool>> chunks = bitlist.Chunk(6).ToList();
@@ -165,14 +172,14 @@ namespace DeEn // Note: actual namespace depends on the project name.
                 }
                 bitslist.Add(bitList);
             }
-            Console.WriteLine(en.Length);
-            foreach (List<bool> boolist in bitslist) {
-                foreach (bool bit in boolist)
-                {
-                    Console.Write(bit ? "1" : "0");
-                }
-                Console.WriteLine();
-            }
+            // Console.WriteLine(en.Length);
+            // foreach (List<bool> boolist in bitslist) {
+            //     foreach (bool bit in boolist)
+            //     {
+            //         Console.Write(bit ? "1" : "0");
+            //     }
+            //     Console.WriteLine();
+            // }
             return 0;
         }
     }
