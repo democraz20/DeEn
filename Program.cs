@@ -85,14 +85,15 @@ namespace DeEn // Note: actual namespace depends on the project name.
                 bitlist.Add(bit);
             }
 
-            if (Bits.Length % 6 != 0) {
-                int div = Bits.Length % 6;
-                for (int i = 0; i < div; i++)
+            int remainder = bitlist.Count % 6;
+            if (remainder != 0) {
+                int zerosToAdd = remainder == 0 ? 0 : 6 - remainder;
+                for (int i = 0; i < zerosToAdd; i++)
                 {
                     bitlist.Add(false);
                 }
             }
-
+            Console.WriteLine(bitlist.Count);
             List<List<bool>> chunks = bitlist.Chunk(6).ToList();
 
             var base64table = new Dictionary<int, char>(){
@@ -172,6 +173,7 @@ namespace DeEn // Note: actual namespace depends on the project name.
                 }
                 bitslist.Add(bitList);
             }
+            Console.WriteLine(bitslist.Count);
             // Console.WriteLine(en.Length);
             // foreach (List<bool> boolist in bitslist) {
             //     foreach (bool bit in boolist)
