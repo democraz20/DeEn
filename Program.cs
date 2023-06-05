@@ -26,53 +26,54 @@ namespace DeEn // Note: actual namespace depends on the project name.
             // string path = @"bin\Debug\net7.0\DeEn.dll";
             
 
-                            string logo = @"
-            ▓█████▄ ▓█████ ▓█████  ███▄    █ 
-            ▒██▀ ██▌▓█   ▀ ▓█   ▀  ██ ▀█   █ 
-            ░██   █▌▒███   ▒███   ▓██  ▀█ ██▒
-            ░▓█▄   ▌▒▓█  ▄ ▒▓█  ▄ ▓██▒  ▐▌██▒
-            ░▒████▓ ░▒████▒░▒████▒▒██░   ▓██░
-             ▒▒▓  ▒ ░░ ▒░ ░░░ ▒░ ░░ ▒░   ▒ ▒ 
-             ░ ▒  ▒  ░ ░  ░ ░ ░  ░░ ░░   ░ ▒░
-             ░ ░  ░    ░      ░      ░   ░ ░ 
-               ░       ░  ░   ░  ░         ░ 
-            ";
-                            Console.WriteLine(logo);
-                        //program loom
-                        while(true) {
-                            Console.Write("Decrypt or Encrypt a file? (1/2) >");
-                            var choice = Console.ReadKey();
-                            Console.WriteLine();
-                            switch (choice.KeyChar.ToString()) {
-                                case "1":
-                                    try {
-                                        // Selected.Decrypt();
-                                        Console.Write("Enter data to decrypt > ");
-                                        string d = Console.ReadLine();
-                                        var returned = de(d);
-                                    } catch (Exception e) {
-                                        var f = String.Format("An Exception occured while decrypting :\n {0}", e.Message);
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.WriteLine(f);
-                                        Console.ResetColor();
-                                    }
-                                    break;
-                                case "2":
-                                    try {
-                                        // Selected.Encrypt();
-                                        Console.WriteLine(en(".gitignore"));
-                                    } catch (Exception e) {
-                                        var f = String.Format("An Exception occured while decrypting :\n {0}", e.Message);
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.WriteLine(f);
-                                        Console.ResetColor();
-                                    }
-                                    break;
-                                default:
-                                    Console.WriteLine("\nExiting...");
-                                    return;
-                            }
-                        }
+
+            //                 string logo = @"
+            // ▓█████▄ ▓█████ ▓█████  ███▄    █ 
+            // ▒██▀ ██▌▓█   ▀ ▓█   ▀  ██ ▀█   █ 
+            // ░██   █▌▒███   ▒███   ▓██  ▀█ ██▒
+            // ░▓█▄   ▌▒▓█  ▄ ▒▓█  ▄ ▓██▒  ▐▌██▒
+            // ░▒████▓ ░▒████▒░▒████▒▒██░   ▓██░
+            //  ▒▒▓  ▒ ░░ ▒░ ░░░ ▒░ ░░ ▒░   ▒ ▒ 
+            //  ░ ▒  ▒  ░ ░  ░ ░ ░  ░░ ░░   ░ ▒░
+            //  ░ ░  ░    ░      ░      ░   ░ ░ 
+            //    ░       ░  ░   ░  ░         ░ 
+            // ";
+            //                 Console.WriteLine(logo);
+            //             //program loom
+            //             while(true) {
+            //                 Console.Write("Decrypt or Encrypt a file? (1/2) >");
+            //                 var choice = Console.ReadKey();
+            //                 Console.WriteLine();
+            //                 switch (choice.KeyChar.ToString()) {
+            //                     case "1":
+            //                         try {
+            //                             // Selected.Decrypt();
+            //                             Console.Write("Enter data to decrypt > ");
+            //                             string d = Console.ReadLine();
+            //                             var returned = de(d);
+            //                         } catch (Exception e) {
+            //                             var f = String.Format("An Exception occured while decrypting :\n {0}", e.Message);
+            //                             Console.ForegroundColor = ConsoleColor.Red;
+            //                             Console.WriteLine(f);
+            //                             Console.ResetColor();
+            //                         }
+            //                         break;
+            //                     case "2":
+            //                         try {
+            //                             // Selected.Encrypt();
+            //                             Console.WriteLine(en(".gitignore"));
+            //                         } catch (Exception e) {
+            //                             var f = String.Format("An Exception occured while decrypting :\n {0}", e.Message);
+            //                             Console.ForegroundColor = ConsoleColor.Red;
+            //                             Console.WriteLine(f);
+            //                             Console.ResetColor();
+            //                         }
+            //                         break;
+            //                     default:
+            //                         Console.WriteLine("\nExiting...");
+            //                         return;
+            //                 }
+            //             }
         }
 
         static string en(string filename) {
@@ -183,6 +184,18 @@ namespace DeEn // Note: actual namespace depends on the project name.
             //     Console.WriteLine();
             // }
             return 0;
+        }
+        static void bitarrcolor(BitArray bitarray) {
+            foreach (bool bit in bitarray) {
+                if (bit) {
+                    Console.BackgroundColor = ConsoleColor.Gray;
+                    Console.Write("1");
+                } else {
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.Write("0");
+                }
+            }
+            Console.ResetColor();
         }
     }
 }
