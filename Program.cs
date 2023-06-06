@@ -20,8 +20,11 @@ namespace DeEn // Note: actual namespace depends on the project name.
 {
     internal class Program
     {
+        private const char PADDINGCHAR = '=';
         static void Main(string[] args)
         {
+            string res = en(".gitignore");
+            de(res);
 
             // string path = @"bin\Debug\net7.0\DeEn.dll";
             
@@ -86,15 +89,18 @@ namespace DeEn // Note: actual namespace depends on the project name.
                 bitlist.Add(bit);
             }
 
+            string padding = "";
+            //padding
             int remainder = bitlist.Count % 6;
             if (remainder != 0) {
                 int zerosToAdd = remainder == 0 ? 0 : 6 - remainder;
                 for (int i = 0; i < zerosToAdd; i++)
-                {
+                {   
+                    padding += PADDINGCHAR;
                     bitlist.Add(false);
                 }
             }
-            Console.WriteLine(bitlist.Count);
+            // Console.WriteLine(bitlist.Count);
             List<List<bool>> chunks = bitlist.Chunk(6).ToList();
 
             var base64table = new Dictionary<int, char>(){
@@ -117,19 +123,27 @@ namespace DeEn // Note: actual namespace depends on the project name.
             };
 
             string s = "";
+            //List<bool> has 6 bits
             foreach (List<bool> boolList in chunks)
             {
-                int result = 0;
+                int number = 0;
                 for (int i = 0; i < boolList.Count; i++)
                 {
-                    bool bit = boolList[i];
-                    if (bit)
+                    number <<= 1;
+                    if (boolList[i])
                     {
-                        result |= 1 << i;
+                        number |= 1;
                     }
                 }
-                s = s + base64table[result];
+                s = s + base64table[number];
             }
+            s += padding;
+            // Console.WriteLine(s);
+            Console.WriteLine(s);
+            Console.WriteLine("Raw bits from file:");
+            bitarrcolor(Bits);
+            Console.WriteLine("\nPadded Bits:");
+            bitarrcolor(new BitArray(bitlist.ToArray()));
             return s;
         }
         static int de(string en) {
@@ -152,17 +166,18 @@ namespace DeEn // Note: actual namespace depends on the project name.
                 { '4', 56 }, { '5', 57 }, { '6', 58 }, { '7', 59 },
                 { '8', 60 }, { '9', 61 }, { '+', 62 }, { '/', 63 }
             };
+
+            //get the list of ints from chars
             List<int> intlist = new List<int>{};
+            int paddingcount = 0;
             foreach (char c in en) {
-                intlist.Add(base64Dictionary[c]);
+                if (c == PADDINGCHAR) {
+                    paddingcount += 1;
+                } else {
+                    intlist.Add(base64Dictionary[c]);
+                }
             }
-            // foreach (int i in intlist) {
-            //     Console.Write("{0}, ", i);
-            // } Console.WriteLine();
-            // byte[] byteArray = intlist.Select(i => (byte)i).ToArray();
-            // foreach (byte b in byteArray) {
-            //     Console.Write("{0}, ", b);
-            // } Console.WriteLine();
+
             List<List<bool>> bitslist = new List<List<bool>>();
             foreach (int num in intlist) {
                 List<bool> bitList = new List<bool>(6);
@@ -174,8 +189,17 @@ namespace DeEn // Note: actual namespace depends on the project name.
                 }
                 bitslist.Add(bitList);
             }
-            Console.WriteLine(bitslist.Count);
-            // Console.WriteLine(en.Length);
+            //removing padding
+            List<bool> lastList = bitslist[bitslist.Count - 1];
+            int itemsToRemove = Math.Min(paddingcount, lastList.Count);
+            lastList.RemoveRange(lastList.Count - itemsToRemove, itemsToRemove);
+
+            //writing out
+            Console.WriteLine("\nConverted bits: ");
+            foreach (List<bool> l in bitslist) {
+                BitArray b = new BitArray(l.ToArray());
+                bitarrcolor(b);
+            }
             // foreach (List<bool> boolist in bitslist) {
             //     foreach (bool bit in boolist)
             //     {
@@ -188,10 +212,10 @@ namespace DeEn // Note: actual namespace depends on the project name.
         static void bitarrcolor(BitArray bitarray) {
             foreach (bool bit in bitarray) {
                 if (bit) {
-                    Console.BackgroundColor = ConsoleColor.Gray;
+                    Console.BackgroundColor = ConsoleColor.Red;
                     Console.Write("1");
                 } else {
-                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Black;
                     Console.Write("0");
                 }
             }
