@@ -100,7 +100,6 @@ namespace DeEn // Note: actual namespace depends on the project name.
                     bitlist.Add(false);
                 }
             }
-            // Console.WriteLine(bitlist.Count);
             List<List<bool>> chunks = bitlist.Chunk(6).ToList();
 
             var base64table = new Dictionary<int, char>(){
@@ -200,13 +199,7 @@ namespace DeEn // Note: actual namespace depends on the project name.
                 BitArray b = new BitArray(l.ToArray());
                 bitarrcolor(b);
             }
-            // foreach (List<bool> boolist in bitslist) {
-            //     foreach (bool bit in boolist)
-            //     {
-            //         Console.Write(bit ? "1" : "0");
-            //     }
-            //     Console.WriteLine();
-            // }
+
             return 0;
         }
         static void bitarrcolor(BitArray bitarray) {
