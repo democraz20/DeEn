@@ -27,7 +27,7 @@ namespace DeEn // Note: actual namespace depends on the project name.
             de(res);
 
             // string path = @"bin\Debug\net7.0\DeEn.dll";
-            
+
 
 
             //                 string logo = @"
@@ -79,10 +79,11 @@ namespace DeEn // Note: actual namespace depends on the project name.
             //             }
         }
 
-        static string en(string filename) {
+        static string en(string filename)
+        {
             byte[] bytes = File.ReadAllBytes(filename);
             var Bits = new BitArray(bytes);
-            
+
             List<bool> bitlist = new List<bool>();
             foreach (bool bit in Bits)
             {
@@ -92,10 +93,11 @@ namespace DeEn // Note: actual namespace depends on the project name.
             string padding = "";
             //padding
             int remainder = bitlist.Count % 6;
-            if (remainder != 0) {
+            if (remainder != 0)
+            {
                 int zerosToAdd = remainder == 0 ? 0 : 6 - remainder;
                 for (int i = 0; i < zerosToAdd; i++)
-                {   
+                {
                     padding += PADDINGCHAR;
                     bitlist.Add(false);
                 }
@@ -145,7 +147,8 @@ namespace DeEn // Note: actual namespace depends on the project name.
             bitarrcolor(new BitArray(bitlist.ToArray()));
             return s;
         }
-        static int de(string en) {
+        static int de(string en)
+        {
             Dictionary<char, int> base64Dictionary = new Dictionary<char, int>
             {
                 { 'A', 0 }, { 'B', 1 }, { 'C', 2 }, { 'D', 3 },
@@ -167,18 +170,23 @@ namespace DeEn // Note: actual namespace depends on the project name.
             };
 
             //get the list of ints from chars
-            List<int> intlist = new List<int>{};
+            List<int> intlist = new List<int> { };
             int paddingcount = 0;
-            foreach (char c in en) {
-                if (c == PADDINGCHAR) {
+            foreach (char c in en)
+            {
+                if (c == PADDINGCHAR)
+                {
                     paddingcount += 1;
-                } else {
+                }
+                else
+                {
                     intlist.Add(base64Dictionary[c]);
                 }
             }
 
             List<List<bool>> bitslist = new List<List<bool>>();
-            foreach (int num in intlist) {
+            foreach (int num in intlist)
+            {
                 List<bool> bitList = new List<bool>(6);
 
                 for (int i = 5; i >= 0; i--)
@@ -195,19 +203,25 @@ namespace DeEn // Note: actual namespace depends on the project name.
 
             //writing out
             Console.WriteLine("\nConverted bits: ");
-            foreach (List<bool> l in bitslist) {
+            foreach (List<bool> l in bitslist)
+            {
                 BitArray b = new BitArray(l.ToArray());
                 bitarrcolor(b);
             }
 
             return 0;
         }
-        static void bitarrcolor(BitArray bitarray) {
-            foreach (bool bit in bitarray) {
-                if (bit) {
+        static void bitarrcolor(BitArray bitarray)
+        {
+            foreach (bool bit in bitarray)
+            {
+                if (bit)
+                {
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.Write("1");
-                } else {
+                }
+                else
+                {
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.Write("0");
                 }
