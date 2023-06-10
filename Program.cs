@@ -30,7 +30,7 @@ namespace DeEn // Note: actual namespace depends on the project name.
 
 
 
-                            string logo = @"
+            string logo = @"
             ▓█████▄ ▓█████ ▓█████  ███▄    █ 
             ▒██▀ ██▌▓█   ▀ ▓█   ▀  ██ ▀█   █ 
             ░██   █▌▒███   ▒███   ▓██  ▀█ ██▒
@@ -41,45 +41,53 @@ namespace DeEn // Note: actual namespace depends on the project name.
              ░ ░  ░    ░      ░      ░   ░ ░ 
                ░       ░  ░   ░  ░         ░ 
             ";
-                            Console.WriteLine(logo);
-                        //program loom
-                        while(true) {
-                            Console.Write("Decrypt or Encrypt a file? (1/2) >");
-                            var choice = Console.ReadKey();
-                            Console.WriteLine();
-                            switch (choice.KeyChar.ToString()) {
-                                case "1":
-                                    try {
-                                        // Selected.Decrypt();
-                                        Console.Write("Enter data to decrypt > ");
-                                        string d = Console.ReadLine();
-                                        var returned = de(d);
-                                    } catch (Exception e) {
-                                        var f = String.Format("An Exception occured while decrypting :\n {0}", e.Message);
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.WriteLine(f);
-                                        Console.ResetColor();
-                                    }
-                                    break;
-                                case "2":
-                                    try {
-                                        // Selected.Encrypt();
-                                        Console.WriteLine(en(".gitignore"));
-                                        Console.Write("Enter filename to encrypt > ");
-                                        string f = Console.ReadLine();
-                                        Console.WriteLine(en(f));
-                                    } catch (Exception e) {
-                                        var f = String.Format("An Exception occured while decrypting :\n {0}", e.Message);
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.WriteLine(f);
-                                        Console.ResetColor();
-                                    }
-                                    break;
-                                default:
-                                    Console.WriteLine("\nExiting...");
-                                    return;
-                            }
+            Console.WriteLine(logo);
+            //program loom
+            while (true)
+            {
+                Console.Write("Decrypt or Encrypt a file? (1/2) >");
+                var choice = Console.ReadKey();
+                Console.WriteLine();
+                switch (choice.KeyChar.ToString())
+                {
+                    case "1":
+                        try
+                        {
+                            // Selected.Decrypt();
+                            Console.Write("Enter data to decrypt > ");
+                            string d = Console.ReadLine();
+                            var returned = de(d);
                         }
+                        catch (Exception e)
+                        {
+                            var f = String.Format("An Exception occured while decrypting :\n {0}", e.Message);
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine(f);
+                            Console.ResetColor();
+                        }
+                        break;
+                    case "2":
+                        try
+                        {
+                            // Selected.Encrypt();
+                            Console.Write("Enter filename to encrypt > ");
+                            string f = Console.ReadLine();
+                            string res = en(f);
+                            Console.WriteLine("\nResult : {0}", res);
+                        }
+                        catch (Exception e)
+                        {
+                            var f = String.Format("An Exception occured while decrypting :\n {0}", e.Message);
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine(f);
+                            Console.ResetColor();
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("\nExiting...");
+                        return;
+                }
+            }
         }
 
         static string en(string filename)
