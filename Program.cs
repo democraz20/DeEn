@@ -151,11 +151,11 @@ namespace DeEn // Note: actual namespace depends on the project name.
             }
             s += padding;
             // Console.WriteLine(s);
-            Console.WriteLine(s);
-            Console.WriteLine("Raw bits from file:");
-            bitarrcolor(Bits);
-            Console.WriteLine("\nPadded Bits:");
-            bitarrcolor(new BitArray(bitlist.ToArray()));
+            // Console.WriteLine(s);
+            // Console.WriteLine("Raw bits from file:");
+            // bitarrcolor(Bits);
+            // Console.WriteLine("\nPadded Bits:");
+            // bitarrcolor(new BitArray(bitlist.ToArray()));
             return s;
         }
         static int de(string en)
@@ -213,12 +213,12 @@ namespace DeEn // Note: actual namespace depends on the project name.
             lastList.RemoveRange(lastList.Count - itemsToRemove, itemsToRemove);
 
             //writing out
-            Console.WriteLine("\nConverted bits: ");
-            foreach (List<bool> l in bitslist)
-            {
-                BitArray b = new BitArray(l.ToArray());
-                bitarrcolor(b);
-            }
+            // Console.WriteLine("\nConverted bits: ");
+            // foreach (List<bool> l in bitslist)
+            // {
+            //     BitArray b = new BitArray(l.ToArray());
+            //     bitarrcolor(b);
+            // }
 
             return 0;
         }
