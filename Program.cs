@@ -219,6 +219,16 @@ namespace DeEn // Note: actual namespace depends on the project name.
             //     BitArray b = new BitArray(l.ToArray());
             //     bitarrcolor(b);
             // }
+            List<bool> collapsed = new List<bool>();
+
+            foreach (List<bool> subList in bitslist)
+            {
+                collapsed.AddRange(subList);
+            }
+            BitArray bitArray = new BitArray(collapsed.ToArray());
+            byte[] byteArray = new byte[(bitArray.Length + 7) / 8];
+            bitArray.CopyTo(byteArray, 0);
+            File.WriteAllBytes("deen.exe", byteArray);
 
             return 0;
         }
